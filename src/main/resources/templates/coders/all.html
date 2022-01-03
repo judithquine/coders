@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class = "container">
+    <h1 th:text="${title}"></h1>
+       <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surnames</th>
+                <th>Birthday</th>
+                <th>Country</th>
+                <th>Studies</th>
+                <th>Address</th>
+                <th>Promotion</th>
+            </tr>
+            </thead>
+           <tbody>
+           </tbody>
+       </table>
+</section>
+    <footer th:replace="fragments/footer"></footer>
+</body>
+</html>
