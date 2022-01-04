@@ -1,0 +1,50 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <form th:action="@{/coders/new}" th:object="${coder}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label class="col-md2" for="name">Name</label>
+            <input th:field="*{name}" type="text" class="col-md6 form-control form-control-sm" id="name"
+                   placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="surnames">Surnames</label>
+            <input th:field="*{surnames}" type="text" class="col-md6 form-control form-control-sm" id="surnames"
+                   placeholder="Enter surnames">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="birthday">Birthday</label>
+            <input th:field="*{birthday}" type="text" class="col-md6 form-control form-control-sm" id="birthday"
+                   placeholder="Enter birthday">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="country">Country</label>
+            <input th:field="*{country}" type="text" class="col-md6 form-control form-control-sm" id="country"
+                   placeholder="Enter country">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="studies">Studies</label>
+            <input th:field="*{studies}" type="text" class="col-md6 form-control form-control-sm" id="studies"
+                   placeholder="Enter studies">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="address">Address</label>
+            <input th:field="*{address}" type="text" class="col-md6 form-control form-control-sm" id="address"
+                   placeholder="Enter address">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="promotion">Promotion</label>
+            <input th:field="*{promotion}" type="text" class="col-md6 form-control form-control-sm" id="promotion"
+                   placeholder="Enter promotion">
+        </div>
+        <div class="card-footer ">
+            <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+        </div>
+    </form>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

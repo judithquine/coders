@@ -5,20 +5,30 @@
 <header th:replace="fragments/header"></header>
 <section class = "container">
     <h1 th:text="${title}"></h1>
-       <table>
+       <table class="table">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surnames</th>
-                <th>Birthday</th>
-                <th>Country</th>
-                <th>Studies</th>
-                <th>Address</th>
-                <th>Promotion</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surnames</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Country</th>
+                <th scope="col">Studies</th>
+                <th scope="col">Address</th>
+                <th scope="col">Promotion</th>
             </tr>
             </thead>
            <tbody>
+           <tr th:each="coder: ${coders}">
+               <th scope="row" th:text="coder.id"></th>
+               <td th:text="${coder.name}"></td>
+               <td th:text="${coder.surnames}"></td>
+               <td th:text="${coder.birthday}"></td>
+               <td th:text="${coder.country}"></td>
+               <td th:text="${coder.studies}"></td>
+               <td th:text="${coder.address}"></td>
+               <td th:text="${coder.promotion}"></td>
+           </tr>
            </tbody>
        </table>
 </section>

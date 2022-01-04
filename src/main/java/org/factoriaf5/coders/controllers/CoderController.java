@@ -26,4 +26,11 @@ public class CoderController {
         model.addAttribute("coders", coders);
         return "coders/all";
     }
+
+    @GetMapping("/coders/new")
+    String getForm(Model model) {
+        Coder coder = new Coder();
+        model.addAttribute("coder", coder );
+        return "coders/new";
+    }
 }
