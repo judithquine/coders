@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 public class CoderController {
 
-    private CoderRepository coderRepository;
+    private final CoderRepository coderRepository;
 
     @Autowired
     public CoderController(CoderRepository coderRepository) {

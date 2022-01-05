@@ -16,11 +16,13 @@
                 <th scope="col">Studies</th>
                 <th scope="col">Address</th>
                 <th scope="col">Promotion</th>
+                <th scope="col">Age</th>
+
             </tr>
             </thead>
            <tbody>
            <tr th:each="coder: ${coders}">
-               <th scope="row" th:text="coder.id"></th>
+               <th scope="row" th:text="${coder.id}"></th>
                <td th:text="${coder.name}"></td>
                <td th:text="${coder.surnames}"></td>
                <td th:text="${coder.birthday}"></td>
@@ -28,6 +30,7 @@
                <td th:text="${coder.studies}"></td>
                <td th:text="${coder.address}"></td>
                <td th:text="${coder.promotion}"></td>
+               <td th:text="${coder.age}"></td>
            </tr>
            </tbody>
        </table>
