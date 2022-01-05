@@ -22,7 +22,7 @@ public class SampleDataLoader {
     @PostConstruct
     public void loadSampleData() {
         coderRepository.saveAll(List.of(
-                new Coder("Judith", "Quiñe Ramos", new GregorianCalendar(1970, Calendar.OCTOBER,7), "Venezuela", "Grado", "Barcelona", "Femtech P2"),
+                new Coder("Judith", "Quiñe Ramos", new GregorianCalendar(1972, Calendar.OCTOBER,7), "Venezuela", "Grado", "Barcelona", "Femtech P2"),
                 new Coder("Sandra", "Barrachina A", new GregorianCalendar(1990, Calendar.OCTOBER,7), "Spain", "Grade", "Barcelona", "Femtech P2")
         ));
     }

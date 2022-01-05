@@ -59,11 +59,16 @@ public class Coder implements Serializable {
         this.surnames = surnames;
     }
 
-    public Calendar getBirthday() {
-        return birthday;
+    public Calendar getBirthday() { return birthday;
     }
 
     public void setBirthday(Calendar birthday) {
+        int year = birthday.get(Calendar.YEAR);
+        int month = birthday.get(Calendar.MONTH);
+        int date = birthday.get(Calendar.DATE);
+        birthday.set(birthday.YEAR, year);
+        birthday.set(birthday.MONTH, month);
+        birthday.set(birthday.DATE, date);
         this.birthday = birthday;
     }
 
