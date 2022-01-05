@@ -9,8 +9,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.hasItem;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -50,6 +54,35 @@ class ApplicationTests {
         mockMvc.perform(get("/coders/new"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("coders/new"));
+    }
+
+    @Test
+    void allowsToCreateANewCoder() throws Exception {
+        mockMvc.perform(post("/coders/new")
+                        .param("name", "Ana")
+                        .param("surnames", "Casas D")
+                        .param("birthday", "01/01/1990")
+                        .param("country", "Venezuela")
+                        .param("studies", "grade")
+                        .param("address", "Barcelona")
+                        .param("promotion", "Femtech P2")
+                        .param("age", "30")
+                )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/coders"))
+        ;
+
+        List<Coder> existingCoders = (List<Coder>) coderRepository.findAll();
+        assertThat(existingCoders, contains(allOf(
+                hasProperty("name", equalTo("Ana")),
+                hasProperty("surnames", equalTo("Casas D")),
+                hasProperty("birthday", equalTo("01/01/1990")),
+                hasProperty("country", equalTo("Venezuela")),
+                hasProperty("studies", equalTo("grade")),
+                hasProperty("address", equalTo("Barcelona")),
+                hasProperty("promotion", equalTo("Femtech P2")),
+                hasProperty("age", equalTo(30))
+        )));
     }
 
 }

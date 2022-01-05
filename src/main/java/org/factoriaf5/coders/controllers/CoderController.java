@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -32,5 +34,11 @@ public class CoderController {
         Coder coder = new Coder();
         model.addAttribute("coder", coder );
         return "coders/new";
+    }
+
+    @PostMapping("/coders/new")
+    String addCoder(@ModelAttribute Coder coder) {
+        coderRepository.save(coder);
+        return "redirect:/coders";
     }
 }
