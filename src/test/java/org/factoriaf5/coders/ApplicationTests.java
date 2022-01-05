@@ -36,7 +36,7 @@ class ApplicationTests {
 
     void returnsTheExitingCoders() throws Exception {
 
-        Coder coder = coderRepository.save(new Coder("Judith", "Quiñe Ramos", new GregorianCalendar(1970, Calendar.OCTOBER,7), "Venezuela", "Grado", "Barcelona", "Femtech P2"));
+        Coder coder = coderRepository.save(new Coder("Judith", "Quiñe Ramos", "7/10/1970", "Venezuela", "Grado", "Barcelona", "Femtech P2", 51));
 
         mockMvc.perform(get("/coders"))
                 .andExpect(status().isOk())

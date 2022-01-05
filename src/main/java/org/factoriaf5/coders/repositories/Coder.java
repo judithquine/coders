@@ -15,17 +15,18 @@ public class Coder implements Serializable {
     private Long id;
     private String name;
     private String surnames;
-    private Calendar birthday;
+    private String birthday;
     private String country;
     private String studies;
     private String address;
     private String promotion;
+    private int age;
 
     public Coder() {
 
     }
 
-    public Coder(String name, String surnames, Calendar birthday, String country, String studies, String address, String promotion) {
+    public Coder(String name, String surnames, String birthday, String country, String studies, String address, String promotion, int age) {
         this.name = name;
         this.surnames = surnames;
         this.birthday = birthday;
@@ -33,6 +34,7 @@ public class Coder implements Serializable {
         this.studies = studies;
         this.address = address;
         this.promotion = promotion;
+        this.age = age;
     }
 
     public Long getId() {
@@ -59,16 +61,10 @@ public class Coder implements Serializable {
         this.surnames = surnames;
     }
 
-    public Calendar getBirthday() { return birthday;
+    public String getBirthday() { return birthday;
     }
 
-    public void setBirthday(Calendar birthday) {
-        int year = birthday.get(Calendar.YEAR);
-        int month = birthday.get(Calendar.MONTH);
-        int date = birthday.get(Calendar.DATE);
-        birthday.set(birthday.YEAR, year);
-        birthday.set(birthday.MONTH, month);
-        birthday.set(birthday.DATE, date);
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -104,6 +100,13 @@ public class Coder implements Serializable {
         this.promotion = promotion;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
 
     @Override
@@ -117,6 +120,7 @@ public class Coder implements Serializable {
                 ", studies='" + studies + '\'' +
                 ", address='" + address + '\'' +
                 ", promotion='" + promotion + '\'' +
+                ", age='" + age + '\'' +
                 '}';
     }
 
@@ -126,11 +130,11 @@ public class Coder implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coder coder = (Coder) o;
-        return Objects.equals(id, coder.id) && Objects.equals(name, coder.name) && Objects.equals(surnames, coder.surnames) && Objects.equals(birthday, coder.birthday) && Objects.equals(country, coder.country) && Objects.equals(studies, coder.studies) && Objects.equals(address, coder.address) && Objects.equals(promotion, coder.promotion);
+        return Objects.equals(id, coder.id) && Objects.equals(name, coder.name) && Objects.equals(surnames, coder.surnames) && Objects.equals(birthday, coder.birthday) && Objects.equals(country, coder.country) && Objects.equals(studies, coder.studies) && Objects.equals(address, coder.address) && Objects.equals(promotion, coder.promotion) && Objects.equals(age, coder.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surnames, birthday,country, studies, address, promotion);
+        return Objects.hash(id, name, surnames, birthday,country, studies, address, promotion, age);
     }
 }
