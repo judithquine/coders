@@ -87,7 +87,7 @@ class ApplicationTests {
         )));
     }
 
-    /*@Test
+    @Test
     void returnsAFormToEditCoders() throws Exception {
         Coder coder = coderRepository.save(new Coder("Sara", "J","01/01/1990", "Spain", "Grade", "Barcelona", "FemTech P2", 40));
         mockMvc.perform(get("/coders/edit/" + coder.getId()))
@@ -95,6 +95,6 @@ class ApplicationTests {
                 .andExpect(view().name("coders/edit"))
                 .andExpect(model().attribute("coder", coder))
                 .andExpect(model().attribute("title", "Edit coder"));
-    }*/
+    }
 
 }

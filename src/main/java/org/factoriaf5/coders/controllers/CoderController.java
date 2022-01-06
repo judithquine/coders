@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -41,5 +42,13 @@ public class CoderController {
     String addCoder(@ModelAttribute Coder coder) {
         coderRepository.save(coder);
         return "redirect:/coders";
+    }
+
+    @GetMapping("/coders/{id}/edit")
+    String editCoder(Model model, @PathVariable Long id) {
+        Coder coder = coderRepository.findById(id).get();
+        model.addAttribute("coder", coder );
+        model.addAttribute("title", "Edit coder");
+        return "coders/edit";
     }
 }
