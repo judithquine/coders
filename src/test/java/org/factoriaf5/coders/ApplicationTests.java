@@ -53,7 +53,9 @@ class ApplicationTests {
     void returnsAFormToAddNewCoders() throws Exception {
         mockMvc.perform(get("/coders/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("coders/new"));
+                .andExpect(view().name("coders/edit"))
+                .andExpect(model().attributeExists("coder"))
+                .andExpect(model().attribute("title", "Create new coder"));
     }
 
     @Test
@@ -84,5 +86,15 @@ class ApplicationTests {
                 hasProperty("age", equalTo(30))
         )));
     }
+
+    /*@Test
+    void returnsAFormToEditCoders() throws Exception {
+        Coder coder = coderRepository.save(new Coder("Sara", "J","01/01/1990", "Spain", "Grade", "Barcelona", "FemTech P2", 40));
+        mockMvc.perform(get("/coders/edit/" + coder.getId()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("coders/edit"))
+                .andExpect(model().attribute("coder", coder))
+                .andExpect(model().attribute("title", "Edit coder"));
+    }*/
 
 }

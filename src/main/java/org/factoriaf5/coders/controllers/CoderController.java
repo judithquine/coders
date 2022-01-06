@@ -33,7 +33,8 @@ public class CoderController {
     String getForm(Model model) {
         Coder coder = new Coder();
         model.addAttribute("coder", coder );
-        return "coders/new";
+        model.addAttribute("title", "Create new book");
+        return "coders/edit";
     }
 
     @PostMapping("/coders/new")
