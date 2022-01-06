@@ -44,7 +44,7 @@ public class CoderController {
         return "redirect:/coders";
     }
 
-    @GetMapping("/coders/{id}/edit")
+    @GetMapping("/coders/edit/{id}")
     String editCoder(Model model, @PathVariable Long id) {
         Coder coder = coderRepository.findById(id).get();
         model.addAttribute("coder", coder );

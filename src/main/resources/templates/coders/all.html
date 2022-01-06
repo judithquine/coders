@@ -17,6 +17,7 @@
                 <th scope="col">Address</th>
                 <th scope="col">Promotion</th>
                 <th scope="col">Age</th>
+                <th scope="col">Edit</th>
 
             </tr>
             </thead>
@@ -31,6 +32,9 @@
                <td th:text="${coder.address}"></td>
                <td th:text="${coder.promotion}"></td>
                <td th:text="${coder.age}"></td>
+               <td>
+                   <a class="btn btn-success btn-sm" th:href="'/coders/edit/'+${coder.id}">Edit</a>
+               </td>
            </tr>
            </tbody>
        </table>
