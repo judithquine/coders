@@ -51,4 +51,10 @@ public class CoderController {
         model.addAttribute("title", "Edit coder");
         return "coders/edit";
     }
+
+    @GetMapping("/coders/delete/{id}")
+    String deleteCoder(@PathVariable Long id) {
+        coderRepository.deleteById(id);
+        return "redirect:/coders";
+    }
 }

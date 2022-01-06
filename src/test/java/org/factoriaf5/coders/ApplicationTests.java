@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -34,9 +35,9 @@ class ApplicationTests {
     @Autowired
     CoderRepository coderRepository;
 
+    @Test
     void returnsTheExitingCoders() throws Exception {
-
-        Coder coder = coderRepository.save(new Coder("Judith", "Quiñe Ramos", "7/10/1970", "Venezuela", "Grado", "Barcelona", "Femtech P2", 51));
+        Coder coder = coderRepository.save(new Coder("Judith", "Quine Ramos", "7/10/1970", "Venezuela", "Grade", "Barcelona", "Femtech P2", 51));
 
         mockMvc.perform(get("/coders"))
                 .andExpect(status().isOk())
@@ -95,6 +96,16 @@ class ApplicationTests {
                 .andExpect(view().name("coders/edit"))
                 .andExpect(model().attribute("coder", coder))
                 .andExpect(model().attribute("title", "Edit coder"));
+    }
+
+    @Test
+    void allowsToDeleteABook() throws Exception {
+        Coder coder = coderRepository.save(new Coder("Sara", "J", "01/01/1990", "Spain", "Grade", "Barcelona", "FemTech P2", 40));
+        mockMvc.perform(get("/coders/delete/" + coder.getId()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/coders"));
+
+        assertThat(coderRepository.findById(coder.getId()), equalTo(Optional.empty()));
     }
 
 }
